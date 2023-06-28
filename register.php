@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
     $cpassword=mysqli_real_escape_string($conn,md5($_POST['cpassword']) );
     $user_type=$_POST['user_type'];
 
-    $select_users=mysqli_query($conn,"SELECT * FROM `users` WHERE email='$email' AND password='$password'") or die('query failed');
+    $select_users=mysqli_query($conn,"SELECT * FROM `register` WHERE email='$email' AND password='$password'") or die('query failed');
 
     if(mysqli_num_rows($select_users) > 0){
         $message[]='User already exists!';
@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
             $message[]='Confirm password not matched!';
         }
         else{
-            mysqli_query($conn,"INSERT INTO `users`(name,email, password, user_type) VALUES('$name','$email','$cpassword','$user_type')") or die('query failed');
+            mysqli_query($conn,"INSERT INTO `register`(name,email, password, user_type) VALUES('$name','$email','$cpassword','$user_type')") or die('query failed');
             $message[]='Registered Successfully!';
             header('location:login.php');
         }
@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Css File Link -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
@@ -55,8 +55,7 @@ if(isset($message)){
             <i class="fa-solid fa-xmark" onclick="this.parentElement.remove();"></i>
         </div>
     ';    
-    }
-    
+    } 
 }
 ?>
 

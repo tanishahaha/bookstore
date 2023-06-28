@@ -1,6 +1,20 @@
+
+<?php
+if(isset($message)){
+    foreach($message as $message){
+        echo '
+        <div class="message">
+            <span>'.$message.'</span>
+            <i class="fa-solid fa-xmark" onclick="this.parentElement.remove();"></i>
+        </div>
+    ';    
+    } 
+}
+?>
+
 <header class="admin_header">
     <div class="header_navigation">
-      <a href="admin_page.php" class="header_logo">Admin <span>Panel</span></a>
+      <a href="admin_page.php" class="header_logo">Admin <span>Dashboard</span></a>
 
       <nav class="header_navbar">
         <a href="admin_page.php">Home</a>
